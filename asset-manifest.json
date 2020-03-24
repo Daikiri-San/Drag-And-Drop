@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Drag-Dnd-Drop/static/css/main.26f87960.chunk.css",
+    "main.js": "/Drag-Dnd-Drop/static/js/main.917c8197.chunk.js",
+    "main.js.map": "/Drag-Dnd-Drop/static/js/main.917c8197.chunk.js.map",
+    "runtime-main.js": "/Drag-Dnd-Drop/static/js/runtime-main.4c60c139.js",
+    "runtime-main.js.map": "/Drag-Dnd-Drop/static/js/runtime-main.4c60c139.js.map",
+    "static/js/2.d499ad40.chunk.js": "/Drag-Dnd-Drop/static/js/2.d499ad40.chunk.js",
+    "static/js/2.d499ad40.chunk.js.map": "/Drag-Dnd-Drop/static/js/2.d499ad40.chunk.js.map",
+    "index.html": "/Drag-Dnd-Drop/index.html",
+    "precache-manifest.8940a08f47d82edb6de772bc50365c44.js": "/Drag-Dnd-Drop/precache-manifest.8940a08f47d82edb6de772bc50365c44.js",
+    "service-worker.js": "/Drag-Dnd-Drop/service-worker.js",
+    "static/css/main.26f87960.chunk.css.map": "/Drag-Dnd-Drop/static/css/main.26f87960.chunk.css.map",
+    "static/js/2.d499ad40.chunk.js.LICENSE.txt": "/Drag-Dnd-Drop/static/js/2.d499ad40.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c60c139.js",
+    "static/js/2.d499ad40.chunk.js",
+    "static/css/main.26f87960.chunk.css",
+    "static/js/main.917c8197.chunk.js"
+  ]
+}
