@@ -2,7 +2,7 @@
   "name": "drag-and-drop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://daikiri-san.github.io/drag-and-drop",
+  "homepage": "https://daikiri-san.github.io/Drag-And-Drop",
   "dependencies": {
     "@reduxjs/toolkit": "^1.2.5",
     "@testing-library/jest-dom": "^4.2.4",
