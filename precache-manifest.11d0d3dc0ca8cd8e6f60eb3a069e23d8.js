@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8753b98b52d058a8435a70becf4d2aa6",
+    "revision": "375c44cba0e226e1bb1c230883a21ba9",
     "url": "/Drag-And-Drop/index.html"
   },
   {
-    "revision": "09f26c87837d76d6c56e",
+    "revision": "0a0cf7b7532052833aea",
     "url": "/Drag-And-Drop/static/css/main.26f87960.chunk.css"
   },
   {
-    "revision": "d58a89b81280cfa9a1ed",
-    "url": "/Drag-And-Drop/static/js/2.8a8fb5f4.chunk.js"
+    "revision": "62000820e61a9d0eb4ef",
+    "url": "/Drag-And-Drop/static/js/2.96f3b1e0.chunk.js"
   },
   {
     "revision": "4ba1a1c11c57ed15aa68008707a3d6b4",
-    "url": "/Drag-And-Drop/static/js/2.8a8fb5f4.chunk.js.LICENSE.txt"
+    "url": "/Drag-And-Drop/static/js/2.96f3b1e0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "09f26c87837d76d6c56e",
-    "url": "/Drag-And-Drop/static/js/main.917c8197.chunk.js"
+    "revision": "0a0cf7b7532052833aea",
+    "url": "/Drag-And-Drop/static/js/main.cff0c635.chunk.js"
   },
   {
     "revision": "fdd42b9a23f4cfe67ce6",
