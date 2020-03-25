@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import initialData from '../initialData';
+import { connect } from 'react-redux';
+import todoActions from '../redux/todo/todoActions';
 import InnerListFroApp from './InnerListForApp';
 import '../base.css';
 
@@ -13,8 +14,44 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const DEFAULT_TASKS = {
+  'task-1': { id: 'task-1', content: 'Take out the garbage' },
+  'task-2': { id: 'task-2', content: 'Watch my favorite show' },
+  'task-3': { id: 'task-3', content: 'Charge my phone' },
+  'task-4': { id: 'task-4', content: 'Cook dinner' },
+};
+
+const DEFAULT_COLUMNS = {
+  'column-1': {
+    id: 'column-1',
+    title: 'To do',
+    taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
+  },
+  'column-2': {
+    id: 'column-2',
+    title: 'In progress',
+    taskIds: [],
+  },
+  'column-3': {
+    id: 'column-3',
+    title: 'Done',
+    taskIds: [],
+  },
+};
+
+const DEFAULT_COLUMN_ORDER = ['column-1', 'column-2', 'column-3'];
+
 class App extends Component {
-  state = initialData;
+  componentDidMount() {
+    const {
+      makeTodosTasks,
+      makeTodosColumns,
+      makeTodosColumnOrder,
+    } = this.props;
+    makeTodosTasks(DEFAULT_TASKS);
+    makeTodosColumns(DEFAULT_COLUMNS);
+    makeTodosColumnOrder(DEFAULT_COLUMN_ORDER);
+  }
 
   onDragStart = (start, provided) => {
     provided.announce(
@@ -40,7 +77,13 @@ class App extends Component {
     provided.announce(message);
 
     const { destination, source, draggableId, type } = result;
-    const { columns, columnOrder } = this.state;
+    const {
+      columns,
+      columnOrder,
+      changeColumnOrder,
+      changeTasksOrder,
+      changeTasksColumnDirection,
+    } = this.props;
 
     if (!destination) {
       return;
@@ -58,12 +101,7 @@ class App extends Component {
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
 
-      const newState = {
-        ...this.state,
-        columnOrder: newColumnOrder,
-      };
-
-      this.setState(newState);
+      changeColumnOrder(newColumnOrder);
       return;
     }
 
@@ -80,15 +118,12 @@ class App extends Component {
         taskIds: newTaskIds,
       };
 
-      const newState = {
-        ...this.state,
-        columns: {
-          ...columns,
-          [newColumn.id]: newColumn,
-        },
+      const NewAsignColums = {
+        ...columns,
+        [newColumn.id]: newColumn,
       };
 
-      this.setState(newState);
+      changeTasksOrder(NewAsignColums);
       return;
     }
 
@@ -107,19 +142,17 @@ class App extends Component {
       taskIds: finishTaskIds,
     };
 
-    const newState = {
-      ...this.state,
-      columns: {
-        ...columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
+    const NewAsignColums = {
+      ...columns,
+      [newStart.id]: newStart,
+      [newFinish.id]: newFinish,
     };
-    this.setState(newState);
+
+    changeTasksColumnDirection(NewAsignColums);
   };
 
   render() {
-    const { columns, columnOrder, tasks } = this.state;
+    const { columns, columnOrder, tasks } = this.props;
     return (
       <DragDropContext
         key={'DND-context'}
@@ -154,4 +187,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ todo }) => {
+  return {
+    tasks: todo.tasks,
+    columns: todo.columns,
+    columnOrder: todo.columnOrder,
+  };
+};
+
+const mapDispatchToProps = {
+  makeTodosTasks: todoActions.makeTodosTasks,
+  makeTodosColumns: todoActions.makeTodosColumns,
+  makeTodosColumnOrder: todoActions.makeTodosColumnOrder,
+  changeColumnOrder: todoActions.changeColumnOrder,
+  changeTasksOrder: todoActions.changeTasksOrder,
+  changeTasksColumnDirection: todoActions.changeTasksColumnDirection,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
